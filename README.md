@@ -1,9 +1,9 @@
 # TicTacToe
-TicTacToe Game
 
 Pseudocode:
 
 index.html
+
     - body
         - h1 : App Heading
         - div : Game Board
@@ -13,6 +13,7 @@ index.html
 
 
 app.js
+
     - instantiate board with blank icon character
     - initiate player
     - define win condition function
