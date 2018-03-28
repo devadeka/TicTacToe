@@ -3,6 +3,7 @@ var cellList = document.querySelectorAll('.cell');
 
 // tracker for who's turn it is
 var player = 0;
+var gameWinState = false;
 
 // set states for cell
 var cellState = ['cell-player1','cell-player2','cell-empty'];
@@ -11,15 +12,19 @@ var cellState = ['cell-player1','cell-player2','cell-empty'];
 cellList.forEach(function(element){
     element.addEventListener('click',function(event){
 
-        // apply logic if cell is empty
-        if(event.target.classList.contains(cellState[2])){
+        // apply logic if cell is empty and game has not been won
+        if(event.target.classList.contains(cellState[2]) && (gameWinState === false)){
 
             // remove cell-empty class and apply class based on player turn
             event.target.classList.remove(cellState[2]);
             event.target.classList.add(cellState[player]);
 
+            gameWinState = checkWinCondition(cellState[player]);
+
             //toggle player turn
             player = player^1; 
+
+            
         }
     });
 });
