@@ -18,10 +18,10 @@ cellList.forEach(function(element){
     });
 });
 
-var checkWinLine = function(index1,index2,index3, cellPlayer){
-    if( (cellList[index1].classList.contains(cellPlayer))&&
-        (cellList[index2].classList.contains(cellPlayer))&&
-        (cellList[index3].classList.contains(cellPlayer))  )
+var checkWinLine = function(comb, cellPlayer){
+    if( (cellList[comb[0]].classList.contains(cellPlayer))&&
+        (cellList[comb[1]].classList.contains(cellPlayer))&&
+        (cellList[comb[2]].classList.contains(cellPlayer))  )
     {
         return true;
     }
@@ -32,31 +32,22 @@ var checkWinLine = function(index1,index2,index3, cellPlayer){
 }
 
 var checkWinCondition = function(cellPlayer){
-    if(checkWinLine(0,1,2,cellPlayer)){
-        return true;
+    var winCombinations = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6]
+    ]
+    for(var i = 0; i < winCombinations.length; i++){
+        if(checkWinLine(winCombinations[i],cellPlayer)){
+            return true;
+        }
     }
-    else if(checkWinLine(3,4,5,cellPlayer)){
-        return true;
-    }
-    else if(checkWinLine(6,7,8,cellPlayer)){
-        return true;
-    }
-    else if(checkWinLine(0,3,6,cellPlayer)){
-        return true;
-    }
-    else if(checkWinLine(1,4,7,cellPlayer)){
-        return true;
-    }
-    else if(checkWinLine(2,5,8,cellPlayer)){
-        return true;
-    }
-    else if(checkWinLine(0,4,8,cellPlayer)){
-        return true;
-    }
-    else if(checkWinLine(2,4,6,cellPlayer)){
-        return true;
-    }
-    else{
-        return false;
-    }
+    
+
+    return false;
 }
