@@ -1,23 +1,30 @@
-var board = []
+// generate list of board cells
 var cellList = document.querySelectorAll('.cell');
 
+// tracker for who's turn it is
 var player = 0;
+
+// set states for cell
 var cellState = ['cell-player1','cell-player2','cell-empty'];
 
+// logic for clicking each cell in board
 cellList.forEach(function(element){
     element.addEventListener('click',function(event){
+
+        // apply logic if cell is empty
         if(event.target.classList.contains(cellState[2])){
+
+            // remove cell-empty class and apply class based on player turn
             event.target.classList.remove(cellState[2]);
             event.target.classList.add(cellState[player]);
-            console.log(checkWinCondition(cellState[player]));
+
+            //toggle player turn
             player = player^1; 
-        }
-        else{
-            console.log(event.target.classList);
         }
     });
 });
 
+// function to check if three cells are the same
 var checkWinLine = function(comb, cellPlayer){
     if( (cellList[comb[0]].classList.contains(cellPlayer))&&
         (cellList[comb[1]].classList.contains(cellPlayer))&&
@@ -31,7 +38,10 @@ var checkWinLine = function(comb, cellPlayer){
     }
 }
 
+//checks if the board has a win condition
 var checkWinCondition = function(cellPlayer){
+
+    //combinations of cells that lead to a win
     var winCombinations = [
         [0,1,2],
         [3,4,5],
@@ -42,12 +52,12 @@ var checkWinCondition = function(cellPlayer){
         [0,4,8],
         [2,4,6]
     ]
+
     for(var i = 0; i < winCombinations.length; i++){
         if(checkWinLine(winCombinations[i],cellPlayer)){
             return true;
         }
     }
     
-
     return false;
 }
