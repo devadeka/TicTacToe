@@ -24,6 +24,7 @@ body{
 .cell {
     width: 33.33%;
     height: 100%;
+    background-color: white;
 }
 
 .game-board > div:nth-child(2){
@@ -34,4 +35,16 @@ body{
 .game-board > div>.cell:nth-child(2){
     border-left: solid black 10px;
     border-right: solid black 10px;
+}
+
+.cell-empty{
+    background-color: white;
+}
+
+.cell-player1{
+    background-color: red;
+}
+
+.cell-player2{
+    background-color: blue;
 }
