@@ -1,5 +1,6 @@
 // generate list of board cells
 var cellList = document.querySelectorAll('.cell');
+var spanPlayerIndication = document.querySelector('.player-indication');
 
 // tracker for who's turn it is
 var player = 0;
@@ -7,6 +8,7 @@ var gameWinState = false;
 
 // set states for cell
 var cellState = ['cell-player1','cell-player2','cell-empty'];
+var playerIndication = ['O','X'];
 
 // logic for clicking each cell in board
 cellList.forEach(function(element){
@@ -22,12 +24,13 @@ cellList.forEach(function(element){
             gameWinState = checkWinCondition(cellState[player]);
 
             //toggle player turn
-            player = player^1; 
-
+            player = player^1;
             
+            spanPlayerIndication.textContent = playerIndication[player];
         }
     });
 });
+
 
 // function to check if three cells are the same
 var checkWinLine = function(comb, cellPlayer){
