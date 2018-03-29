@@ -16,6 +16,7 @@ header{
     display: flex;
     flex-direction: column;
     height: 500px;
+    background-color: black
 }
 
 .game-board > div{
@@ -23,25 +24,43 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 33%;
-    /* border: 3px 0 3px 0 solid black; */
+    height: 33.33%;
 }
 
 .cell {
     width: 33.33%;
     height: 100%;
     background-color: white;
-    /* border: solid 1px black; */
+}
+
+.game-board > div:nth-child(1){
+    border-top: solid white 5px;
+    border-bottom: solid black 5px;
 }
 
 .game-board > div:nth-child(2){
-    border-top: solid black 10px;
-    border-bottom: solid black 10px;
+    border-top: solid black 5px;
+    border-bottom: solid black 5px;
+}
+
+.game-board > div:nth-child(3){
+    border-top: solid black 5px;
+    border-bottom: solid white 5px;
+}
+
+.game-board > div>.cell:nth-child(1){
+    border-left: solid white 5px;
+    border-right: solid black 5px;
 }
 
 .game-board > div>.cell:nth-child(2){
-    border-left: solid black 10px;
-    border-right: solid black 10px;
+    border-left: solid black 5px;
+    border-right: solid black 5px;
+}
+
+.game-board > div>.cell:nth-child(3){
+    border-left: solid black 5px;
+    border-right: solid white 5px;
 }
 
 .cell-empty{

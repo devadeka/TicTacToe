@@ -1,6 +1,6 @@
 // generate list of board cells
 var cellList = document.querySelectorAll('.cell');
-var spanPlayerIndication = document.querySelector('.player-indication');
+var paraTurnDisplay = document.querySelector('.turn-display');
 
 // tracker for who's turn it is
 var player = 0;
@@ -22,11 +22,17 @@ cellList.forEach(function(element){
             event.target.classList.add(cellState[player]);
 
             gameWinState = checkWinCondition(cellState[player]);
-
-            //toggle player turn
-            player = player^1;
             
-            spanPlayerIndication.textContent = playerIndication[player];
+            if(gameWinState){
+                paraTurnDisplay.textContent = `Player ${playerIndication[player]} WINS!!`;
+            }
+            else{
+                //toggle player turn
+                player = player^1;
+                
+                paraTurnDisplay.textContent = `Player ${playerIndication[player]}'s Turn`;
+            }
+            
         }
     });
 });
