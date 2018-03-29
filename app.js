@@ -10,6 +10,8 @@ var gameWinState = false;
 var cellState = ['cell-player1','cell-player2','cell-empty'];
 var playerIndication = ['O','X'];
 
+
+
 // logic for clicking each cell in board
 cellList.forEach(function(element){
     element.addEventListener('click',function(event){
@@ -21,10 +23,13 @@ cellList.forEach(function(element){
             event.target.classList.remove(cellState[2]);
             event.target.classList.add(cellState[player]);
 
-            gameWinState = checkWinCondition(cellState[player]);
+            var gameWinSituation = checkWinCondition(cellState[player])
+            gameWinState = gameWinSituation[0];
+            var gameWinCombination = gameWinSituation[1];
             
             if(gameWinState){
                 paraTurnDisplay.textContent = `Player ${playerIndication[player]} WINS!!`;
+                showWinningCells(gameWinCombination);
             }
             else{
                 //toggle player turn
@@ -37,6 +42,11 @@ cellList.forEach(function(element){
     });
 });
 
+var showWinningCells = function(winningCombination){
+    winningCombination.forEach(function(cell){
+        cellList[cell].style.backgroundColor = 'pink';
+    });
+};
 
 // function to check if three cells are the same
 var checkWinLine = function(comb, cellPlayer){
@@ -50,7 +60,7 @@ var checkWinLine = function(comb, cellPlayer){
     {
         return false;
     }
-}
+};
 
 //checks if the board has a win condition
 var checkWinCondition = function(cellPlayer){
@@ -69,9 +79,9 @@ var checkWinCondition = function(cellPlayer){
 
     for(var i = 0; i < winCombinations.length; i++){
         if(checkWinLine(winCombinations[i],cellPlayer)){
-            return true;
+            return [true,winCombinations[i]];
         }
     }
     
-    return false;
+    return [false,[]];
 }

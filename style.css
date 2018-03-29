@@ -16,7 +16,6 @@ header{
     display: flex;
     flex-direction: column;
     height: 500px;
-    background-color: black
 }
 
 .game-board > div{
