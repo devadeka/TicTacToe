@@ -10,8 +10,6 @@ var gameWinState = false;
 var cellState = ['cell-player1','cell-player2','cell-empty'];
 var playerIndication = ['O','X'];
 
-
-
 // logic for clicking each cell in board
 cellList.forEach(function(element){
     element.addEventListener('click',function(event){
@@ -44,7 +42,8 @@ cellList.forEach(function(element){
 
 var showWinningCells = function(winningCombination){
     winningCombination.forEach(function(cell){
-        cellList[cell].style.backgroundColor = 'pink';
+        cellList[cell].classList.add('animated');
+        cellList[cell].classList.add('flash');
     });
 };
 

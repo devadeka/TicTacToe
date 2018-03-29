@@ -23,10 +23,16 @@ header{
     background: black;
 }
 
-
-.cell {
+.game-board > div{
     width: 31%;
     height: 31%;
+    background-color: white;
+}
+
+
+.cell {
+    width: 100%;
+    height: 100%;
     background-color: white;
 }
 
