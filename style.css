@@ -4,10 +4,11 @@
 
 header{
     text-align: center;
+    padding-bottom: 10px;
 }
 
 .game-container{
-    width: 400px;
+    width: 300px;
     margin: 0 auto;
 }
 
@@ -18,7 +19,7 @@ header{
     flex-wrap: wrap;
     align-content: space-between;
     justify-content: space-between;
-    height: 400px;
+    height: 300px;
     box-sizing: border-box;
     background: black;
 }
@@ -50,4 +51,29 @@ header{
     background-image: url(images/x_icon.png);
     background-size: contain;
     background-repeat: no-repeat;
+}
+
+.turn-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.turn-container > div{
+    padding: 5px;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    border: solid lightgrey 0.1px;
+}
+
+.turn-container>div:nth-child(2){
+    flex-direction: row-reverse;
+}
+
+.turn-selected{
+    background-color: lightgrey;
+}
+
+.turn-unselected{
+    background-color: white;
 }

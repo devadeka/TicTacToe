@@ -1,6 +1,8 @@
 // generate list of board cells
 var cellList = document.querySelectorAll('.cell');
 var paraTurnDisplay = document.querySelector('.turn-display');
+var divOIndicator = document.querySelector('.o-indicator');
+var divXIndicator = document.querySelector('.x-indicator');
 
 // tracker for who's turn it is
 var player = 0;
@@ -26,20 +28,37 @@ cellList.forEach(function(element){
             var gameWinCombination = gameWinSituation[1];
             
             if(gameWinState){
-                paraTurnDisplay.textContent = `Player ${playerIndication[player]} WINS!!`;
+                // paraTurnDisplay.textContent = `Player ${playerIndication[player]} WINS!!`;
                 showWinningCells(gameWinCombination);
             }
             else{
                 //toggle player turn
                 player = player^1;
-                
-                paraTurnDisplay.textContent = `Player ${playerIndication[player]}'s Turn`;
+                togglePlayer();
             }
             
         }
     });
 });
 
+
+// function to toggle and indicate player turn
+var togglePlayer = function(){
+    if(divOIndicator.classList.contains('turn-selected')){
+        divOIndicator.classList.remove('turn-selected');
+        divOIndicator.classList.add('turn-unselected');
+        divXIndicator.classList.remove('turn-unselected');
+        divXIndicator.classList.add('turn-selected');
+    }else if(divXIndicator.classList.contains('turn-selected')){
+        divXIndicator.classList.remove('turn-selected');
+        divXIndicator.classList.add('turn-unselected');
+        divOIndicator.classList.remove('turn-unselected');
+        divOIndicator.classList.add('turn-selected');
+    }
+    else{}
+};
+
+// function to animate winning combination
 var showWinningCells = function(winningCombination){
     winningCombination.forEach(function(cell){
         cellList[cell].classList.add('animated');
