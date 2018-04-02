@@ -3,10 +3,12 @@ var cellList = document.querySelectorAll('.cell');
 var paraTurnDisplay = document.querySelector('.turn-display');
 var divOIndicator = document.querySelector('.o-indicator');
 var divXIndicator = document.querySelector('.x-indicator');
+var divGameBoard = document.querySelector('.game-board');
 
 // tracker for who's turn it is
 var player = 0;
 var gameWinState = false;
+var placeCount = 0;
 
 // set states for cell
 var cellState = ['cell-player1','cell-player2','cell-empty'];
@@ -22,11 +24,14 @@ cellList.forEach(function(element){
             // remove cell-empty class and apply class based on player turn
             event.target.classList.remove(cellState[2]);
             event.target.classList.add(cellState[player]);
+            event.target.classList.add('animated');
+            event.target.classList.add('fadeIn');
 
             var gameWinSituation = checkWinCondition(cellState[player])
             gameWinState = gameWinSituation[0];
             var gameWinCombination = gameWinSituation[1];
-            
+            placeCount += 1;
+
             if(gameWinState){
                 // paraTurnDisplay.textContent = `Player ${playerIndication[player]} WINS!!`;
                 showWinningCells(gameWinCombination);
@@ -35,8 +40,12 @@ cellList.forEach(function(element){
                 //toggle player turn
                 player = player^1;
                 togglePlayer();
+
+                if(placeCount === 9){
+                    divGameBoard.classList.add('shake');
+                    divGameBoard.classList.add('animated');
+                }
             }
-            
         }
     });
 });
@@ -61,6 +70,8 @@ var togglePlayer = function(){
 // function to animate winning combination
 var showWinningCells = function(winningCombination){
     winningCombination.forEach(function(cell){
+        cellList[cell].classList.remove('animated');
+        cellList[cell].classList.remove('fadeIn');
         cellList[cell].classList.add('animated');
         cellList[cell].classList.add('flash');
     });

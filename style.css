@@ -4,7 +4,7 @@
 
 header{
     text-align: center;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
 }
 
 .game-container{
@@ -76,4 +76,16 @@ header{
 
 .turn-unselected{
     background-color: white;
+}
+
+.new-game{
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: solid lightgray 3px;
+    background: white;
+}
+
+.new-game:active{
+    background: lightgray;
 }
