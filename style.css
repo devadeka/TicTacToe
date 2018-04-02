@@ -67,10 +67,17 @@ header{
     display: flex;
     flex-direction: row;
     border: solid lightgrey 0.1px;
+    align-content: space-between;
 }
 
 .turn-container>div:nth-child(2){
     flex-direction: row-reverse;
+}
+
+.turn-container > div > *{
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
 }
 
 .turn-selected{

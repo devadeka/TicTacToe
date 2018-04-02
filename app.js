@@ -5,15 +5,21 @@ var divOIndicator = document.querySelector('.o-indicator');
 var divXIndicator = document.querySelector('.x-indicator');
 var divGameBoard = document.querySelector('.game-board');
 var btnNewGame = document.querySelector('.new-game');
+var spanOCounter = document.querySelector('.o-counter');
+var spanXCounter = document.querySelector('.x-counter');
 
 // tracker for who's turn it is
 var player = 0;
 var gameWinState = false;
 var placeCount = 0;
 
+var oWins = 0;
+var xWins = 0;
+
+
+
 // set states for cell
 var cellState = ['cell-player1','cell-player2','cell-empty'];
-var playerIndication = ['O','X'];
 
 // logic for clicking each cell in board
 cellList.forEach(function(element){
@@ -36,6 +42,17 @@ cellList.forEach(function(element){
             if(gameWinState){
                 // paraTurnDisplay.textContent = `Player ${playerIndication[player]} WINS!!`;
                 showWinningCells(gameWinCombination);
+                if(player === 0){
+                    oWins += 1;
+                    spanOCounter.textContent = oWins;
+                }
+                else if(player === 1){
+                    xWins += 1;
+                    spanXCounter.textContent = xWins;
+                }
+                else{}
+
+
             }
             else{
                 //toggle player turn
