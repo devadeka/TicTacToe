@@ -1,6 +1,6 @@
 # TicTacToe
 
-## Click the following link to play: https://kasiamisirli.github.io/Rick-Tak-Toe/.
+## Click the following link to play: https://devadeka.github.io/TicTacToe/.
 
 Classic TicTacToe game with clean and simple design. Winner of a game is indicated by the flashing icons. If a draw occurs, it is indicated by the board shaking. The bar up top indicates which player's turn it is and how many games each player has won.
 
