@@ -4,6 +4,7 @@ var paraTurnDisplay = document.querySelector('.turn-display');
 var divOIndicator = document.querySelector('.o-indicator');
 var divXIndicator = document.querySelector('.x-indicator');
 var divGameBoard = document.querySelector('.game-board');
+var btnNewGame = document.querySelector('.new-game');
 
 // tracker for who's turn it is
 var player = 0;
@@ -50,6 +51,9 @@ cellList.forEach(function(element){
     });
 });
 
+btnNewGame.addEventListener('click',function(){
+    resetGame();
+});
 
 // function to toggle and indicate player turn
 var togglePlayer = function(){
@@ -113,4 +117,19 @@ var checkWinCondition = function(cellPlayer){
     }
     
     return [false,[]];
+}
+
+var resetGame = function(){
+    cellList.forEach(function(cell){
+        cell.classList = [];
+        cell.classList.add("cell");
+        cell.classList.add("cell-empty");
+    });
+    player = 0;
+    gameWinState = false;
+    placeCount = 0;
+    divXIndicator.classList.remove('turn-selected');
+    divXIndicator.classList.add('turn-unselected');
+    divOIndicator.classList.remove('turn-unselected');
+    divOIndicator.classList.add('turn-selected');
 }
